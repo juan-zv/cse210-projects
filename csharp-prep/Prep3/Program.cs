@@ -16,17 +16,20 @@ class Program
             Console.WriteLine("What is your guess?");
             guess_num = int.Parse(Console.ReadLine());
 
-            if (magic_num > guess_num)
+            if (int.Parse(magic_num) > guess_num)
             {
                 Console.WriteLine("Higher");
             }
+
+            else if (int.Parse(magic_num) < guess_num)
+            {
+                Console.WriteLine("Lower");
+            }
+            else if (int.Parse(magic_num) == guess_num)
+            {
+                Console.WriteLine("You guessed it!");
+            }
+
         }
     }
 }
-
-def fhvjyv(x, y, f)
-    sum = x + y 
-
-
-
-fhvjyv()
