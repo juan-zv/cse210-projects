@@ -29,6 +29,7 @@ class Program
             Entrada.GetEntry();
 
             Lista.Add(Entrada);
+
             Console.WriteLine("");
 
             

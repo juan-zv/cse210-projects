@@ -9,7 +9,6 @@ public class Entry
     public Random random = new Random();
     public List<string> questions = new List<string>();
 
-    // public List<Entry> entries = new List<Entry>();
     public Entry () {
         
     }
