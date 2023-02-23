@@ -67,6 +67,7 @@ class Program
                 journal.LoadJournal(filename);
             }
 
+
         } while (choice != 5);
     }    
         
