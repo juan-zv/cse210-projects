@@ -4,7 +4,6 @@ using System.IO;
 
 public class Journal
 {
-<<<<<<< HEAD
     public List<Entry> entries;
 
     public Journal()
@@ -60,8 +59,4 @@ public class Journal
             }
         }
     }
-=======
-    
-    
->>>>>>> 9aa0723b1c7b985070f329cf98946528b140ff6d
 }
