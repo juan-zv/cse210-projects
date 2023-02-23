@@ -1,64 +1,73 @@
 using System;
+using System.Collections.Generic;
+using System.IO;
 
 class Program
 {
     static void Main(string[] args)
     {
-        List<Entry> Lista = new List<Entry>();
+        Journal journal = new Journal();
+        Random rand = new Random();
+        List<string> prompts = new List<string>();
+        List<string> responses = new List<string>();
+        prompts.Add("What was something that made you feel happy?");
+        prompts.Add("What was something that made you feel sad? Why?");
+        prompts.Add("How did you see the hand of the Lord in your life today?");
+        prompts.Add("If you could repeat something from today, what would it be?");
+    
+        int choice = 0;
+        do
+        {
+        
+            Console.WriteLine("1. Write a new entry");
+            Console.WriteLine("2. Display the journal");
+            Console.WriteLine("3. Save the journal to a file");
+            Console.WriteLine("4. Load the journal from a file");
+            Console.WriteLine("5. Exit");
+            Console.WriteLine("Enter your choice:");
+                    
+            choice = int.Parse(Console.ReadLine());
+            Console.WriteLine();
+
+            if (choice== 1)
+            {
+                Entry entry = new Entry();
+                
+                int index = rand.Next(prompts.Count);
+                System.Console.WriteLine(prompts[index]);
+                entry.prompt = prompts[index];
+                
+                string response = Console.ReadLine();
+                
+                responses.Add(response);
+                entry.response = response;
+                journal.entries.Add(entry);
+
+                
+                foreach(string answer in responses)
+                {
+                    System.Console.WriteLine("Response: " + answer);
+                }
 
 
-        Entry Entrada = new Entry();
+            }
+            else if(choice == 2){
+                journal.DisplayJournal();
 
-        int option = 5;
+            }
+            else if(choice == 3){
+                Console.WriteLine("what is the file name?");
+                string filename = Console.ReadLine();
+                journal.SaveJournal(filename);
 
+            }
+            else if(choice == 4){
+                Console.WriteLine("what is the file name?");
+                string filename = Console.ReadLine();
+                journal.LoadJournal(filename);
+            }
 
-
-        do{ 
-        Console.WriteLine("Hello, this is the journal program. Please select one of the following or 0 to quit the program: ");
-        Console.WriteLine("0. Quit");
-        Console.WriteLine("1. Write an Entry");
-        Console.WriteLine("2. Display the entries");
-        Console.WriteLine("3. Save entries to a file");
-        Console.WriteLine("4. Load entries from a file");
-        Console.WriteLine("");
-
-
-        option = int.Parse(Console.ReadLine());
-
-        if (option == 1) {
-            Entrada.GetEntry();
-
-            Lista.Add(Entrada);
-
-            Console.WriteLine("");
-
-            
-        }
-
-        else if (option == 2) {
-            Console.WriteLine(Lista[0]);
-            Console.WriteLine("");
-
-        }
-
-        else if (option == 3) {
-            Console.WriteLine("Option 3");
-            Console.WriteLine("");
-        }
-
-
-        else if (option == 4) {
-            Console.WriteLine("Option 4");
-            Console.WriteLine("");
-
-        }
-
-        else {
-            Console.WriteLine("Please select a valid option");
-            Console.WriteLine("");
-        }
-
-        } while (option != 0);
-
-    }
+        } while (choice != 5);
+    }    
+        
 }

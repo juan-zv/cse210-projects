@@ -1,36 +1,16 @@
 using System;
+using System.Collections.Generic;
+using System.IO;
 
-public class Entry 
+public class Entry
 {
-    public string _entry = "";
-    public string date = "";
-    public string question = "";
-    
-    public Random random = new Random();
-    public List<string> questions = new List<string>();
+    public string date;
+    public string prompt;
+    public string response;
 
-    public Entry () {
-        
-    }
-
-
-
-    public void GetEntry()
+    public Entry ()
     {
-
-        questions.Add("How was your day?"); 
-        questions.Add("What did you learn from today?");
-        questions.Add("What was something bad that happened?");
-        questions.Add("What do you expect for tomorrow?");
-        
-        int index = random.Next(questions.Count);
-
-        question = questions[index];
-        DateTime todaysDate = DateTime.Now;
-        date = todaysDate.ToShortDateString();
-
-        Console.WriteLine(question);
-
-        _entry = Console.ReadLine();  
+        DateTime dateTime = DateTime.Now;
+        date = dateTime.ToShortDateString();
     }
 }
