@@ -5,22 +5,11 @@ class Program
 {
     static void Main(string[] args)
     {
-        string paragraph = "This is a sample paragraph that you can use to test your memory.";
-        string[] words = paragraph.Split(' ');
-        int numberOfWords = words.Length;
-        List<int> hiddenWords = new List<int>();
-        Random random = new Random();
+        Reference ref1 = new Reference("1 Nephi", 3, 7);
+        ref1.displayReference();
+        Scripture scripture1 = new Scripture("And it came to pass that I, Nephi, said unto my father: I will go and do the things which the Lord hath commanded, for I know that the Lord giveth no bcommandments unto the children of men, save he shall cprepare a way for them that they may accomplish the thing which he commandeth them.");
+        scripture1.hideScripture();
 
-        while (hiddenWords.Count < numberOfWords)
-        {
-            int randomIndex = random.Next(0, numberOfWords);
-            if (!hiddenWords.Contains(randomIndex))
-            {
-                hiddenWords.Add(randomIndex);
-                words[randomIndex] = "_____";
-            }
-        }
 
-        Console.WriteLine(string.Join(" ", words));
     }
 }
