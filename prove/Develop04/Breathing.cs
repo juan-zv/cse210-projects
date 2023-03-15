@@ -10,13 +10,45 @@ public class Breathing:Activity
     }
 
 
-    public void BreatheInOut(int time) {
+
+
+    public int BreatheInOut() {
         Console.Write("Breathe in...");
-        Console.Write("");
+        Console.Write("4");
+        Thread.Sleep(1000);
+        Console.Write("\b");
+        Console.Write("3");
+        Thread.Sleep(1000);
+        Console.Write("\b");
+        Console.Write("2");
+        Thread.Sleep(1000);
+        Console.Write("\b");
+        Console.Write("1");
+        Thread.Sleep(1000);
+        Console.Write("\b");
 
 
-        Console.Write("Now breathe out...");
-        Console.Write("");
+        Console.WriteLine("Now breathe out...");
+        Console.Write("6");
+        Thread.Sleep(1000);
+        Console.Write("\b");
+        Console.Write("5");
+        Thread.Sleep(1000);
+        Console.Write("\b");
+        Console.Write("4");
+        Thread.Sleep(1000);
+        Console.Write("\b");
+        Console.Write("3");
+        Thread.Sleep(1000);
+        Console.Write("\b");
+        Console.Write("2");
+        Thread.Sleep(1000);
+        Console.Write("\b");
+        Console.Write("1");
+        Thread.Sleep(1000);
+        Console.Write("\b");
+        Console.WriteLine("");
+        return 10;
     }
 
 
