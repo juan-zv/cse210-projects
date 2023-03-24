@@ -2,13 +2,7 @@ using System;
 
 public class SimpleGoal:Goal
 {
+   public SimpleGoal(){
 
-    
- 
-   public SimpleGoal(string name, string descrptn, int points):base(name,descrptn, points){}
-
-
-
-
-
+   }
 }
