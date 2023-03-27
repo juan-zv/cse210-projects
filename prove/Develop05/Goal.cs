@@ -5,22 +5,27 @@ public class Goal
     private string _name;
     private string _description;
     private int _points;
-    private bool _checked;
 
     public Goal() {
     }
 
-    public virtual void SetType(int typeOfGoal){
-        _type = typeOfGoal;
+    public Goal(string type, string name, string description, string points){
+        _type = int.Parse(type);
+        _name = name;
+        _description = description;
+        _points = int.Parse(points);
     }
 
     public virtual int GetGoalType(){
         return _type;
     }
+    public virtual void SetGoalType(int typeOfGoal){
+        _type = typeOfGoal;
+    }
+
 
     public virtual void SetGoal(){
 
-        _checked = false;
         Console.WriteLine("What is the name of your goal?");
         _name = Console.ReadLine();
         Console.WriteLine("what is a short description of it?");
@@ -31,32 +36,43 @@ public class Goal
     }
 
     public virtual void DisplayGoal() {
-        if (_checked == false){
-            Console.WriteLine($"[ ] {_name} ({_description})");
-        }
-        else if (_checked == true){
-            Console.WriteLine($"[X] {_name} ({_description})");
-        }
+        Console.WriteLine($"[ ] {_name} ({_description})");
     }
 
-    public virtual void CheckGoal() {
-        if (_checked == false) {
-            _checked = true;
-        }
+    public virtual int CheckGoal() {
+        return _points;
     }
 
+    public virtual string GetGoalData(){
+        string goalData = $"{_type}, {_name}, {_description}, {_points}";
+        return goalData;
+    }
 
-
+    public virtual void StringToGoal(string type, string name, string description, string points){
+        _type = int.Parse(type);
+        _name = name;
+        _description = description;
+        _points = int.Parse(points);
+    }
 
     public virtual string GetName () {
         return _name;
+    }
+    public virtual void SetName(string name){
+        _name = name;
     }
 
     public virtual string GetDescription() {
         return _description;
     }
+    public virtual void SetDescription(string description){
+        _description = description;
+    }
 
     public virtual int GetPoints() {
         return _points;
+    }
+    public virtual void SetPoints(int points){
+        _points = points;
     }
 }

@@ -1,0 +1,4 @@
+270
+1, Eat fish, Dont like fish but I need to, 120, True
+2, Do Bed, Do my bed when I wake up, 50
+3, Temple, Go to the temple, 100, 1, 500, 500
