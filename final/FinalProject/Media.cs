@@ -14,9 +14,21 @@ public Media (string type, string name, string author){
     Console.WriteLine(_date);
 }
 public virtual void DisplayMedia(){
-    Console.WriteLine($"{_type}: {_name} - {_author}. Added: {_date}");
+    Console.WriteLine($"{_type}: {_name} by: {_author}. Added: {_date}");
 }
 
+public string GetName(){
+    return _name;
+}
+public string GetAuthor(){
+    return _author;
+}
+public string GetDate(){
+    return _date;
+}
+public string GetMediaType(){
+    return _type;
+}
 
 
 

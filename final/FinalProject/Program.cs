@@ -8,7 +8,7 @@ class Program
         int userChoice;
 
         do {
-
+            Console.WriteLine("");
             Console.WriteLine("Welcome to the Media Manager program by Juan Zurita");
             Console.WriteLine("Select what do you want to do:");
             Console.WriteLine("\t1. See available media");
@@ -21,30 +21,35 @@ class Program
             userChoice = int.Parse(Console.ReadLine());
 
             if (userChoice == 1){
+                Console.WriteLine("");
                 foreach (Media item in mediaList)
                 {
                     item.DisplayMedia();
                 }
+                Console.WriteLine("");
             }
 
             else if (userChoice == 2){
 
                 Console.WriteLine("What type of media do you want to add?");
-                Console.WriteLine("\t1. Song");
-                Console.WriteLine("\t2. Entire Song Album");
+                Console.WriteLine("\t1. Entire Song Album");
+                Console.WriteLine("\t2. Song");
                 Console.WriteLine("\t3. Photo");
                 Console.WriteLine("\t4. Video");
                 Console.WriteLine("\t5. E-book");
                 Console.WriteLine("\t6. Document");
                 int mediaType = int.Parse(Console.ReadLine());
                 if (mediaType == 1){
-                    Console.WriteLine("What is the name of the song?");
+                    Console.WriteLine("What is the name of the song album?");
                     string name = Console.ReadLine();
                     Console.WriteLine("Who is the artist?");
                     string author = Console.ReadLine();
-
-                    Song newSong = new Song("Song", name, author);
-                    mediaList.Add(newSong);
+                    Console.WriteLine("What other artists are there in the album?");
+                    string otherArtists = Console.ReadLine();
+                    Console.WriteLine("Do you want to add songs to the album?(Yes/No)");
+                    
+                    Album newAlbum = new Album("Song", name, author, otherArtists);
+                    mediaList.Add(newAlbum);
                 }
                 else if (mediaType == 2){
                     Console.WriteLine("What is the name of the song?");
@@ -55,8 +60,7 @@ class Program
                     string otherArtists = Console.ReadLine();
                     Console.WriteLine("What is the duration of the song?");
                     int length = int.Parse(Console.ReadLine());
-                    
-                    
+
                     Song newSong = new Song("Song", name, author, otherArtists, length);
                     mediaList.Add(newSong);
                 }
