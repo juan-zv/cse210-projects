@@ -11,13 +11,10 @@ public Media (string type, string name, string author){
     _author = author;
     DateTime currentDate = DateTime.Now;
     _date = currentDate.ToString(); //date given as dd/mm/yyyy hh:mm:ss
-    Console.WriteLine(_date);
-}
-public virtual void DisplayMedia(){
-    Console.WriteLine($"{_type}: {_name} by: {_author}. Added: {_date}");
-}
 
-public string GetName(){
+    Console.WriteLine("New media succesfully added");
+}
+public string GetName(){   
     return _name;
 }
 public string GetAuthor(){
@@ -29,9 +26,13 @@ public string GetDate(){
 public string GetMediaType(){
     return _type;
 }
+public virtual void DisplayMedia(){
+    Console.WriteLine($"{_type}: {_name} by: {_author}. Added: {_date}");
+}
 
-
-
+public virtual string MediaData(){
+    return $"{_type}, {_name}, {_author}";
+}
 
 
 

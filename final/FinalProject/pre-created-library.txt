@@ -1,0 +1,6 @@
+Song, Pass with an A?, Juan Zurita,   , 3 
+Album, Songs to pass Programming with Classes, Juan Zurita, Justin Bieber
+Photo, My Apartment, Juan Zurita, Rexburg-ID, iPhone 6, JPEG
+Video, My Apartment Tour, Juan Zurita, Rexburg-ID, iPhone X, MP4, 5
+Ebook, Harry Potter and the Gaming Laptop, Juan Zurita, 123456789, Comedy, Harry Potter buys a gaming laptop which makes him miss all his adventures in Hoghwarts
+Document, Me begging for an A, Juan Zurita, Essay-Grade-Hope, docx, Russian

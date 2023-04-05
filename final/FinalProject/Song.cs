@@ -9,4 +9,20 @@ public Song(string type, string name, string author, string invitedArtists, int 
     _songLength = length;
 }
 
+public override void DisplayMedia()
+{
+    // if (GetInvitedArtists() == " "){
+    //     Console.WriteLine($"{GetType()}: {GetName()} by: {GetAuthor()} || Duration:{_songLength} min || Added: {GetDate()}");
+    // }
+    // else{}
+    
+    Console.WriteLine($"{GetType()}: {GetName()} by: {GetAuthor()} and {GetInvitedArtists()} || Duration:{_songLength} min || Added: {GetDate()}");
+}
+
+public override string MediaData()
+{
+    return $"{GetType()}, {GetName()}, {GetAuthor()}, {GetInvitedArtists()}, {_songLength}";
+}
+
+
 }

@@ -10,26 +10,19 @@ class Program
         do {
             Console.WriteLine("");
             Console.WriteLine("Welcome to the Media Manager program by Juan Zurita");
+            Console.WriteLine("The program has a sample library you can use. It is called 'pre-created-library'");
             Console.WriteLine("Select what do you want to do:");
-            Console.WriteLine("\t1. See available media");
-            Console.WriteLine("\t2. Add new element to the library");
+            Console.WriteLine("\t1. Add new element to the library");
+            Console.WriteLine("\t2. See available media");
             Console.WriteLine("\t3. Edit element");
             Console.WriteLine("\t4. Organize element");
-            Console.WriteLine("\t5. Share element");
-            Console.WriteLine("\t6. Upload elements to the cloud");
+            Console.WriteLine("\t5. Share library");
+            Console.WriteLine("\t6. Upload library");
             Console.WriteLine("\t7. Quit");
             userChoice = int.Parse(Console.ReadLine());
 
-            if (userChoice == 1){
-                Console.WriteLine("");
-                foreach (Media item in mediaList)
-                {
-                    item.DisplayMedia();
-                }
-                Console.WriteLine("");
-            }
 
-            else if (userChoice == 2){
+            if (userChoice == 1){
 
                 Console.WriteLine("What type of media do you want to add?");
                 Console.WriteLine("\t1. Entire Song Album");
@@ -44,11 +37,11 @@ class Program
                     string name = Console.ReadLine();
                     Console.WriteLine("Who is the artist?");
                     string author = Console.ReadLine();
-                    Console.WriteLine("What other artists are there in the album?");
+                    Console.WriteLine("What other artists are there in the album?(Separate them by dashes or dots, not commas)");
                     string otherArtists = Console.ReadLine();
                     Console.WriteLine("Do you want to add songs to the album?(Yes/No)");
                     
-                    Album newAlbum = new Album("Song", name, author, otherArtists);
+                    Album newAlbum = new Album("Album", name, author, otherArtists);
                     mediaList.Add(newAlbum);
                 }
                 else if (mediaType == 2){
@@ -116,7 +109,7 @@ class Program
                     string name = Console.ReadLine();
                     Console.WriteLine("Who is the author?");
                     string author = Console.ReadLine();
-                    Console.WriteLine("What is a keyword for the document?(If more than one, separate them by comas)");
+                    Console.WriteLine("What is a keyword for the document?(If more than one, separate them by dashes)");
                     string keywords = Console.ReadLine();
                     Console.WriteLine("What is the file format?");
                     string fileFormat = Console.ReadLine();
@@ -126,8 +119,115 @@ class Program
                     Document newDoc = new Document("Document", name, author, keywords, fileFormat, language);
                     mediaList.Add(newDoc);
                 }
+            }    
+
+            else if (userChoice == 2){
+                Console.WriteLine("");
+                foreach (Media item in mediaList)
+                {
+                    item.DisplayMedia();
+                    Console.WriteLine("");
+                }
+                Console.WriteLine("");
+            }
+
+            else if (userChoice == 3){
+                int i = 1;
+
+                Console.WriteLine("Which element do you want to edit(delete)?");
+                Console.WriteLine("");
+                foreach (Media item in mediaList)
+                {
+                    Console.Write($"{i}. "); item.DisplayMedia();
+                    Console.WriteLine("");
+                    i++;
+                }
+                Console.WriteLine("");
+
+                int editChoice = int.Parse(Console.ReadLine()) - 1;
+
+                //select mediaList[editChoice] and do something with it
+
+                mediaList.RemoveAt(editChoice);
+
+                Console.WriteLine("The edit feature is still in a beta so the item will just be deleted and you will hve to create a new one. Thank you :)");
+            }
+
+            else if (userChoice == 4){
+                int i = 1;
+
+                Console.WriteLine("Which element do you want to organize?");
+                Console.WriteLine("");
+                foreach (Media item in mediaList)
+                {
+                    Console.Write($"/t{i}. "); item.DisplayMedia();
+                    Console.WriteLine("");
+                    i++;
+                }
+                Console.WriteLine("");
+
+                int editChoice = int.Parse(Console.ReadLine()) - 1;
+
+                Console.WriteLine("In what order number do you want to put it?");
+
+                int newOrder = int.Parse(Console.ReadLine()) - 1;
+                
+                Media mediaToMove = mediaList[editChoice];
+
+                mediaList.RemoveAt(editChoice);
+
+                mediaList.Insert(newOrder, mediaToMove);
+            }
+
+            else if (userChoice == 5){
+                Console.WriteLine("What is the name of the file you want to save the library as?");
+                string fileName = Console.ReadLine();
+
+                List<string> mediaDataList = new List<string>();
+
+                foreach (var item in mediaList)
+                {
+                    mediaDataList.Add(item.MediaData());
+                }
+                File.WriteAllLines($"{fileName}.txt", mediaDataList);
+            }
+
+            else if (userChoice == 6){
+                Console.WriteLine("What is the name of the file you want to upload to the library?");
+                string fileName = Console.ReadLine();
+                string[] mediaDataList = File.ReadAllLines($"{fileName}.txt");
+
+                foreach (var item in mediaDataList)
+                {
+                    string[] media = item.Split(", ");
+                    if (media[0] == "Album"){
+                        Album newAlbum = new Album(media[0], media[1], media[2], media[3]);
+                        mediaList.Add(newAlbum);
+                    }
+                    else if (media[0] == "Song"){
+                        Song newSong = new Song(media[0], media[1], media[2], media[3], int.Parse(media[4]));
+                        mediaList.Add(newSong);
+                    }
+                    else if (media[0] == "Photo"){
+                        Photo newPhoto = new Photo(media[0], media[1], media[2], media[3], media[4], media[5]);
+                        mediaList.Add(newPhoto);
+                    }
+                    else if (media[0] == "Video"){
+                        Video newVideo = new Video(media[0], media[1], media[2], media[3], media[4], media[5], int.Parse(media[6]));
+                        mediaList.Add(newVideo);
+                    }
+                    else if (media[0] == "Ebook"){
+                        Ebook newBook = new Ebook(media[0], media[1], media[2], int.Parse(media[3]), media[4], media[5]);
+                        mediaList.Add(newBook);
+                    }
+                    else if (media[0] == "Document"){
+                        Document newDoc = new Document(media[0], media[1], media[2], media[3], media[4], media[5]);
+                        mediaList.Add(newDoc);
+                    }
+                }
 
             }
+
         }
         while (userChoice != 7);
     }
